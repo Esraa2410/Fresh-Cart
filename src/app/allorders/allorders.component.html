@@ -1,0 +1,11 @@
+<div class="continer">
+    <div class="row">
+        <div class="col-md-4 bg-main " *ngFor="let order of allOrders">
+            <h3>{{order.createdAt}}</h3>
+            <h3>{{order.paymentMethodType}}</h3>
+            <h3>{{order.isDelivered}}</h3>
+            <h3>{{order.isPaid}}</h3>
+            <h3>{{order.totalOrderPrice}}</h3>
+        </div>
+    </div>
+</div>

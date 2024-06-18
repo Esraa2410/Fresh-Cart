@@ -1,0 +1,15 @@
+<div class="w-50 mx-auto my-5 row justify-content-center align-items-center">
+    <form [formGroup]="checkForm" (ngSubmit)="onlinePayment(cartId , checkForm)">
+        <label for="details" class="my-1">Details:</label>
+        <input type="text" formControlName="details" class="form-control mb-2" name="" id="details">
+
+        <label for="phone" class="my-1">Phone:</label>
+        <input type="text" formControlName="phone" class="form-control mb-2" name="" id="phone">
+
+        <label for="city" class="my-1">City:</label>
+        <input type="text" formControlName="city" class="form-control mb-2" name="" id="city">
+
+        <button class="mt-5 w-25 btn bg-main text-light" type="submit" >Pay</button>
+    </form>
+
+</div>

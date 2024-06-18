@@ -1,0 +1,22 @@
+<div class="row align-items-center m-4 p-5" *ngIf="brandDetails">
+    <div class="col-md-4">
+        <owl-carousel-o [options]="customOptions">
+            <ng-container >
+              <ng-template carouselSlide >
+                <img class="shadow" [src]="brandDetails.image" >
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+    </div>
+    <div class="col-md-8">
+        <h2 class="h4 fw-bolder mb-2">{{brandDetails.name |uppercase}}</h2>
+        <p class="text-muted p-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, ut? Nam?</p>
+        <div class="w-100 text-end">
+            <button routerLink="/brands" class="btn bg-dark text-white w-25 my-2">Back</button>
+        </div>
+        
+    </div>
+</div>
+<div class="row justify-content-center " *ngIf="!brandDetails">
+  <img class="w-50 h-50 mt-5" src="../../assets/images/error.svg" alt="">
+</div>

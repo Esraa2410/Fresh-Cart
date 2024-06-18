@@ -1,0 +1,34 @@
+<div class="container my-5" *ngIf="products">
+    <h2>Products</h2>
+    <div class="my-5">
+        <input [(ngModel)]="searchTerm" type="text" placeholder="Search By Name" class="form-control mx-auto w-75"
+            name="" id="">
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <div *ngFor="let product of products|search:searchTerm" class="col-md-2 p-2"
+            style="box-sizing: border-box!important;">
+            <div class="shadow p-2 ">
+                <a [routerLink]="['/product-details' ,product._id]">
+                    <img class="w-100" src={{product.imageCover}} alt="">
+                    <span class="text-main fw-bold font-sm">{{product.category.name |lowercase}}</span>
+                    <h3 class="h6 fw-bolder">{{product.title.split(' ').slice(0,2).join(' ')|lowercase}}</h3>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-muted fw-bold font-sm">{{product.price|currency}}</span>
+                        <div>
+                            <i class="fas fa-star rating-color "></i>
+                            <span class="text-muted fw-bold font-sm">{{product.ratingsAverage}}</span>
+                        </div>
+                    </div>
+                </a>
+                <button (click)="addToCart(product._id)" class="btn bg-main text-white w-100 my-2">Add To Cart </button>
+                <button (click)="addToWishList(product._id)" class="btn bg-main text-white w-100 my-2">Add To Wish
+                    List</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center " *ngIf="!products">
+    <img class="w-50 h-50 mt-5" src="../../assets/images/error.svg" alt="">
+</div>

@@ -1,0 +1,41 @@
+<div class="bg-main-light my-4 p-4 pt-5 mt-5" *ngIf="wishList">
+    <div class="my-5 p-5" *ngIf="wishList.length==0">
+        <h3 class="text-main">No Products In This List</h3>
+    </div>
+    <div *ngIf="wishList.length > 0">
+    <h3 class="text-main">Wish List</h3>
+
+    <div class="row align-items-center border-bottom py-3" *ngFor="let product of wishList">
+        <div class="col-md-1">
+            <img class="w-100 h-100" [src]="product.imageCover" alt="">
+        </div>
+        <div class="col-md-11 d-flex justify-content-between align-items-center">
+            <div>
+                <h6 class="">{{product.title}}</h6>
+                <h6 >Brand:{{product.brand.name}}</h6>
+                <h6 >Quantity : {{product.quantity}}</h6>
+                <h6 class="">Price : {{product.price}}</h6>
+                <button (click)="removeProductFromCart(product._id)" class="mt-2 bg-danger btn text-white">
+                    Remove
+                </button>
+        
+            </div>
+          
+          
+        </div>
+       
+    </div>
+    <div class="w-100 text-end ">
+        <button routerLink="/home" class="btn bg-main text-white w-25 my-4">Back To Home</button>
+    </div>
+
+    <div class="w-100 text-end">
+
+</div>
+</div>
+</div>
+<div class="row justify-content-center " *ngIf="!wishList">
+    <img class="w-50 h-50 mt-5" src="../../assets/images/error.svg" alt="">
+</div>
+
+

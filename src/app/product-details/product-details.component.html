@@ -1,0 +1,28 @@
+<div class="row align-items-center px-5 py-3" *ngIf="productDtails">
+    <div class="col-md-4">
+        <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let image of productDtails.images">
+              <ng-template carouselSlide >
+                <img [src]="image" >
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+    </div>
+    <div class="col-md-8">
+        <h2 class="h4 fw-bolder mb-2">{{productDtails?.title |uppercase}}</h2>
+        <p class="text-muted p-3">{{productDtails?.description }}</p>
+        <div class="d-flex justify-content-between align-items-center">
+            <span class="text-muted fw-bold font-sm">{{productDtails?.price}}EGP</span> 
+            <div>
+                <i class="fas fa-star rating-color "></i>
+                <span class="text-muted fw-bold font-sm">{{productDtails?.ratingsAverage}} </span>
+            </div>
+            
+        </div>
+
+        <button class="btn bg-main text-white w-100 my-2">+ Add</button>
+    </div>
+</div>
+<div class="row justify-content-center " *ngIf="!productDtails">
+  <img class="w-50 h-50 mt-5" src="../../assets/images/error.svg" alt="">
+</div>

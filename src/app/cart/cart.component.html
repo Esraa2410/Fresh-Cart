@@ -1,0 +1,41 @@
+<div class="bg-main-light my-4 p-4 pt-5 mt-5" *ngIf="cartsList">
+    <div class="my-5 p-5" *ngIf="cartsList.products.length==0">
+        <h3 class="text-main">No Products In This Cart</h3>
+    </div>
+    <div *ngIf="cartsList.products.length > 0">
+    <h3 class="text-main">Shop Cart</h3>
+    <h6 class="">Totle Price : {{cartsList.totalCartPrice}} EGP</h6>
+
+    <div class="row align-items-center border-bottom py-3" *ngFor="let product of cartsList.products">
+        <div class="col-md-1">
+            <img class="w-100 h-100" [src]="product.product.imageCover" alt="">
+        </div>
+        <div class="col-md-11 d-flex justify-content-between align-items-center">
+            <div>
+                <h6>{{product.product.title}}</h6>
+                <h6 class="">Price : {{product.price}}</h6>
+                <button (click)="removeProductFromCart(product.product._id)" class="mt-2 bg-danger btn text-white">
+                    Remove
+                </button>
+                <!-- <button class="btn m-0 p-0"><i class="text-main  fa-regular fa-trash-can"></i>Remove</button> -->
+            </div>
+            <div>
+                <button (click)="updateProductCount(product.product._id,product.count+1)" class="btn border-main ">
+                    +
+                </button>
+                <span class="mx-2 "> {{product.count}}</span>
+                <button (click)="updateProductCount(product.product._id,product.count-1)" class="btn border-main ">
+                    -
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-100 text-end">
+    <button [routerLink]="['/checkout',cartsList._id]" class="my-3 ms-auto btn bg-main text-white w-25">Online Payment</button>
+</div>
+</div>
+</div>
+<div class="row justify-content-center " *ngIf="!cartsList">
+    <img class="w-50 h-50 mt-5" src="../../assets/images/error.svg" alt="">
+</div>

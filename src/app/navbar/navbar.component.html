@@ -1,0 +1,77 @@
+<nav class="navbar  navbar-expand-sm navbar-light bg-light w-100" style="width: 100%!important;">
+    <div class="container p-1 m-0  mx-auto">
+        <a class="navbar-brand" href="#">
+            <img src="../../assets/images/freshcart-logo.svg" alt="">
+        </a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link p-2" routerLink="home" [routerLinkActive]="['active']">Home</a>
+                </li>
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link p-2" routerLink="cart" [routerLinkActive]="['active']">Cart</a>
+                </li>
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link p-2" routerLink="wishlist" [routerLinkActive]="['active']">Wish List</a>
+                </li>
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link p-2" routerLink="products" [routerLinkActive]="['active']">Products</a>
+                </li>
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link p-2" routerLink="categories" [routerLinkActive]="['active']">Categories</a>
+                </li>
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link p-2" routerLink="brands" [routerLinkActive]="['active']">Brands</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                <li class="nav-item d-flex justifiy-content-center align-items-center">
+                    <i class="fab mx-2 fa-instagram"></i>
+                    <i class="fab mx-2 fa-facebook"></i>
+                    <i class="fab mx-2 fa-tiktok"></i>
+                    <i class="fab mx-2 fa-twitter"></i>
+                    <i class="fab mx-2 fa-youtube"></i>
+                </li>
+                <li *ngIf="!isLogin" class="nav-item">
+                    <a class="nav-link" routerLink="login" [routerLinkActive]="['active']">Login</a>
+                </li>
+                <li *ngIf="!isLogin" class="nav-item">
+                    <a class="nav-link" routerLink="register" [routerLinkActive]="['active']">Register</a>
+                </li>
+                <li (click)="handleLogOut()" *ngIf="isLogin" class="nav-item">
+                    <span class="nav-link cursor-pointer">LogOut</span>
+                </li>
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="p-2 position-relative nav-link" routerLink="cart">
+                        <i class="fas fa-cart-shopping text-main fa-lg"></i>
+                        <span class="badge bg-main text-white position-absolute top-0 end-0">{{numOfCartItems}}</span>
+                    </a>
+                </li>
+                <!-- <li  *ngIf="isLogin" class="nav-item">
+                    <a routerLink="settings" class="nav-link cursor-pointer"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                </li> -->
+                <li *ngIf="isLogin">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="openProfile()">
+                          <mat-icon >account_circle</mat-icon>
+                          <span>Update Profile</span>
+                        </button>
+                        <button mat-menu-item  (click)="openChangePassDailog()">
+                          <mat-icon >change_circle</mat-icon>
+                          <span>Change Password</span>
+                        </button>
+                      </mat-menu>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
