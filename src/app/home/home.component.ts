@@ -28,12 +28,10 @@ export class HomeComponent implements OnInit {
     this._CartService.addToCart(productId).subscribe({
       next: (res) => {
         this._CartService.numOfCartItems.next(res.numOfCartItems);
-     //  console.log(res)
         this._ToastrService.success(res.message)
 
       }, error: (err: HttpErrorResponse) => {
         this._ToastrService.error(err.error.message)
-    //   console.log(err);
       }
     })
   }
@@ -41,12 +39,10 @@ export class HomeComponent implements OnInit {
   addToWishList(productId: string) {
     this._CartService.addToWishList(productId).subscribe({
       next: (res) => {
-       // this._CartService.numOfCartItems.next(res.numOfCartItems);
-        // console.log(res.message)
         this._ToastrService.success(res.message)
   
       }, error: (err) => {
-        // console.log(err);
+        this._ToastrService.error(err.error.message)
       }
     })
   }
